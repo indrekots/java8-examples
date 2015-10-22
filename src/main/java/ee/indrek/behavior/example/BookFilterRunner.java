@@ -12,6 +12,11 @@ public class BookFilterRunner {
 
         System.out.println(findLongNovels(books));
         System.out.println(filterBooksByAuthor(books, "Lewis Carrol"));
+
+        BookPredicate lengthPredicate = new LengthPredicate(200);
+        BookPredicate authorPredicate = new AuthorPredicate("Lewis Carrol");
+        System.out.println(filterBooks(books, lengthPredicate));
+        System.out.println(filterBooks(books, authorPredicate));
     }
 
     public static List<Book> findLongNovels(List<Book> books) {
@@ -28,6 +33,16 @@ public class BookFilterRunner {
         List<Book> result = new ArrayList<>();
         for (Book book : books) {
             if (author.equals(book.getAuthor())) {
+                result.add(book);
+            }
+        }
+        return result;
+    }
+
+    public static List<Book> filterBooks(List<Book> books, BookPredicate p) {
+        List<Book> result = new ArrayList<>();
+        for (Book book : books) {
+            if (p.test(book)) {
                 result.add(book);
             }
         }
