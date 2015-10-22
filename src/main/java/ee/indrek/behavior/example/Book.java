@@ -3,10 +3,12 @@ package ee.indrek.behavior.example;
 public class Book {
     private String name;
     private int pageCount;
+    private String author;
 
-    public Book(String name, int pageCount) {
+    public Book(String name, int pageCount, String author) {
         this.name = name;
         this.pageCount = pageCount;
+        this.author = author;
     }
 
     public String getName() {
@@ -25,8 +27,16 @@ public class Book {
         this.pageCount = pageCount;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
     @Override
     public String toString() {
-        return String.format("Name: %s, page count: %d", name, pageCount);
+        return String.format("Name: %s, page count: %d, author: %s", name, pageCount, author);
     }
 }

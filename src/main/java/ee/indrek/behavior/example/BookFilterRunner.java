@@ -6,9 +6,9 @@ import java.util.List;
 public class BookFilterRunner {
     public static void main(String[] args) {
         List<Book> books = new ArrayList<>();
-        books.add(new Book("Moby Dick", 250));
-        books.add(new Book("Alice in Wonderland", 190));
-        books.add(new Book("Hobbit", 340));
+        books.add(new Book("Moby Dick", 250, "Herman Melville"));
+        books.add(new Book("Alice's Adventures in Wonderland", 190, "Lewis Carrol"));
+        books.add(new Book("Sylvie and Bruno", 400, "Lewis Carrol"));
 
         System.out.println(findLongNovels(books));
     }
