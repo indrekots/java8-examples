@@ -11,12 +11,23 @@ public class BookFilterRunner {
         books.add(new Book("Sylvie and Bruno", 400, "Lewis Carrol"));
 
         System.out.println(findLongNovels(books));
+        System.out.println(filterBooksByAuthor(books, "Lewis Carrol"));
     }
 
     public static List<Book> findLongNovels(List<Book> books) {
         List<Book> result = new ArrayList<>();
         for (Book book : books) {
             if (book.getPageCount() > 200) {
+                result.add(book);
+            }
+        }
+        return result;
+    }
+
+    public static List<Book> filterBooksByAuthor(List<Book> books, String author) {
+        List<Book> result = new ArrayList<>();
+        for (Book book : books) {
+            if (author.equals(book.getAuthor())) {
                 result.add(book);
             }
         }
