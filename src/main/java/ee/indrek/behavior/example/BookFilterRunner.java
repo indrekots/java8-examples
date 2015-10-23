@@ -17,6 +17,14 @@ public class BookFilterRunner {
         BookPredicate authorPredicate = new AuthorPredicate("Lewis Carrol");
         System.out.println(filterBooks(books, lengthPredicate));
         System.out.println(filterBooks(books, authorPredicate));
+
+        //example using an anonymous inner class
+        filterBooks(books, new BookPredicate() {
+            @Override
+            public boolean test(Book book) {
+                return "Lewis Carrol".equals(book.getAuthor());
+            }
+        });
     }
 
     public static List<Book> findLongNovels(List<Book> books) {
