@@ -1,7 +1,14 @@
 package ee.indrek.behavior.example;
 
+import ch.lambdaj.Lambda;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import static ch.lambdaj.Lambda.*;
+import static org.hamcrest.Matchers.equalTo;
 
 public class BookFilterRunner {
     public static void main(String[] args) {
@@ -19,12 +26,23 @@ public class BookFilterRunner {
         System.out.println(filterBooks(books, authorPredicate));
 
         //example using an anonymous inner class
-        filterBooks(books, new BookPredicate() {
+        System.out.println(filterBooks(books, new BookPredicate() {
             @Override
             public boolean test(Book book) {
                 return "Lewis Carrol".equals(book.getAuthor());
             }
-        });
+        }));
+
+        //example using google guava
+        System.out.println(Iterables.filter(books, new Predicate<Book>() {
+            @Override
+            public boolean apply(Book input) {
+                return "Lewis Carrol".equals(input.getAuthor());
+            }
+        }));
+
+        //example using lambdaj
+        filter(having(on(Book.class).getAuthor(), equalTo("Lewis Carrol")), books);
     }
 
     public static List<Book> findLongNovels(List<Book> books) {
