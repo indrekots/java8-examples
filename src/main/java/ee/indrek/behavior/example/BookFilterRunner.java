@@ -1,6 +1,5 @@
 package ee.indrek.behavior.example;
 
-import ch.lambdaj.Lambda;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
@@ -74,4 +73,5 @@ public class BookFilterRunner {
         }
         return result;
     }
+
 }
