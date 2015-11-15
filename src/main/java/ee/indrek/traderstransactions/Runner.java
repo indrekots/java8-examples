@@ -13,6 +13,16 @@ public class Runner {
 
         System.out.println(transactionsOfYear2011(transactions));
         System.out.println(findDistinctCities(transactions));
+        System.out.println(findCambridgeTraders(transactions));
+    }
+
+    private static List<Trader> findCambridgeTraders(List<Transaction> transactions) {
+        return transactions.stream()
+                .map(Transaction::getTrader)
+                .filter(t -> "Cambridge".equals(t.getCity()))
+                .sorted(comparing(Trader::getName))
+                .distinct()
+                .collect(toList());
     }
 
     private static List<String> findDistinctCities(List<Transaction> transactions) {
