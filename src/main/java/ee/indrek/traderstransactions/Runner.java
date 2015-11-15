@@ -2,6 +2,7 @@ package ee.indrek.traderstransactions;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
@@ -14,6 +15,15 @@ public class Runner {
         System.out.println(transactionsOfYear2011(transactions));
         System.out.println(findDistinctCities(transactions));
         System.out.println(findCambridgeTraders(transactions));
+        System.out.println(findTradersNames(transactions));
+    }
+
+    private static List<String> findTradersNames(List<Transaction> transactions) {
+        return transactions.stream()
+                .map(t -> t.getTrader().getName())
+                .distinct()
+                .sorted()
+                .collect(toList());
     }
 
     private static List<Trader> findCambridgeTraders(List<Transaction> transactions) {
