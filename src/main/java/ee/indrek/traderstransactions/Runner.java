@@ -12,6 +12,13 @@ public class Runner {
         List<Transaction> transactions = createTransactions();
 
         System.out.println(transactionsOfYear2011(transactions));
+        System.out.println(findDistinctCities(transactions));
+    }
+
+    private static List<String> findDistinctCities(List<Transaction> transactions) {
+        return transactions.stream()
+                .map(t -> t.getTrader().getCity())
+                .distinct().collect(toList());
     }
 
     private static List<Transaction> transactionsOfYear2011(List<Transaction> transactions) {
