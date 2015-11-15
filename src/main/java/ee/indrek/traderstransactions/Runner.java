@@ -2,7 +2,6 @@ package ee.indrek.traderstransactions;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 import static java.util.Comparator.comparing;
 import static java.util.stream.Collectors.toList;
@@ -16,6 +15,14 @@ public class Runner {
         System.out.println(findDistinctCities(transactions));
         System.out.println(findCambridgeTraders(transactions));
         System.out.println(findTradersNames(transactions));
+        System.out.println(isAnyTraderBasedInMilan(transactions));
+    }
+
+    private static boolean isAnyTraderBasedInMilan(List<Transaction> transactions) {
+        return transactions.stream()
+                .map(Transaction::getTrader)
+                .filter(t -> "Milan".equals(t.getCity()))
+                .findAny().isPresent();
     }
 
     private static List<String> findTradersNames(List<Transaction> transactions) {
