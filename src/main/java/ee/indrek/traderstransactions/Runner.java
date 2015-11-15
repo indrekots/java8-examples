@@ -15,10 +15,10 @@ public class Runner {
         System.out.println(findDistinctCities(transactions));
         System.out.println(findCambridgeTraders(transactions));
         System.out.println(findTradersNames(transactions));
-        System.out.println(isAnyTraderBasedInMilan(transactions));
+        System.out.println(areAnyTraderBasedInMilan(transactions));
     }
 
-    private static boolean isAnyTraderBasedInMilan(List<Transaction> transactions) {
+    private static boolean areAnyTraderBasedInMilan(List<Transaction> transactions) {
         return transactions.stream()
                 .map(Transaction::getTrader)
                 .filter(t -> "Milan".equals(t.getCity()))
