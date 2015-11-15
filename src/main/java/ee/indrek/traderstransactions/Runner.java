@@ -16,8 +16,14 @@ public class Runner {
         System.out.println(findCambridgeTraders(transactions));
         System.out.println(findTradersNames(transactions));
         System.out.println(areAnyTraderBasedInMilan(transactions));
-
         System.out.println(findCambridgeTransactions(transactions));
+        System.out.println(findMaxTransaction(transactions));
+    }
+
+    private static int findMaxTransaction(List<Transaction> transactions) {
+        return transactions.stream()
+                .mapToInt(Transaction::getValue)
+                .max().getAsInt();
     }
 
     private static List<Integer> findCambridgeTransactions(List<Transaction> transactions) {
