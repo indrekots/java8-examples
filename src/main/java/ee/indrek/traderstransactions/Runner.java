@@ -18,6 +18,13 @@ public class Runner {
         System.out.println(areAnyTraderBasedInMilan(transactions));
         System.out.println(findCambridgeTransactions(transactions));
         System.out.println(findMaxTransaction(transactions));
+        System.out.println(findSmallestTransaction(transactions));
+    }
+
+    private static Transaction findSmallestTransaction(List<Transaction> transactions) {
+        return transactions.stream()
+                .reduce((t1, t2) -> t1.getValue() < t2.getValue() ? t1 : t2)
+                .get();
     }
 
     private static int findMaxTransaction(List<Transaction> transactions) {
