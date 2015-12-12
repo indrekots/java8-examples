@@ -4,9 +4,7 @@ import ee.indrek.behavior.example.Book;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.IntSupplier;
-import java.util.function.Supplier;
+import java.util.function.*;
 
 public class MethodReference {
 
@@ -32,5 +30,11 @@ public class MethodReference {
         Function<String, Book> b = Book::new;
         Book book = b.apply("Book name");
         System.out.println(book);
+
+        IntFunction<int[]> array = int[]::new;
+        int[] apply = array.apply(10);
+        System.out.println(apply.length);
+
+        
     }
 }
