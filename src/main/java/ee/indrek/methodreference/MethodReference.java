@@ -31,10 +31,16 @@ public class MethodReference {
         Book book = b.apply("Book name");
         System.out.println(book);
 
+        //array constructor reference
         IntFunction<int[]> array = int[]::new;
         int[] apply = array.apply(10);
         System.out.println(apply.length);
 
-        
+        //this keyword in method reference
+        new Thread(this::sayHello).start();
+    }
+
+    private void sayHello() {
+        System.out.println("Hello World!");
     }
 }
