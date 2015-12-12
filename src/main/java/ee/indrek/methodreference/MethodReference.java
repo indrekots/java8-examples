@@ -4,6 +4,7 @@ import ee.indrek.behavior.example.Book;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.IntSupplier;
 import java.util.function.Supplier;
 
@@ -26,5 +27,10 @@ public class MethodReference {
 
         //constructor reference example
         Supplier<Book> bookSupplier = Book::new;
+
+        //constructor reference to a one argument constructor
+        Function<String, Book> b = Book::new;
+        Book book = b.apply("Book name");
+        System.out.println(book);
     }
 }

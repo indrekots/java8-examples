@@ -11,6 +11,10 @@ public class Book {
         this.author = author;
     }
 
+    public Book(String name) {
+        this.name = name;
+    }
+
     public Book() {}
 
     public String getName() {
