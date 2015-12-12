@@ -5,6 +5,7 @@ import ee.indrek.behavior.example.Book;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.IntSupplier;
+import java.util.function.Supplier;
 
 public class MethodReference {
 
@@ -19,7 +20,11 @@ public class MethodReference {
         books = new ArrayList<>();
         books.add(new Book("All Quiet on the Western Front", 295, "Erich Maria Remarque"));
 
+        //method reference example
         IntSupplier bookLength = books::size;
         System.out.println(bookLength.getAsInt());
+
+        //constructor reference example
+        Supplier<Book> bookSupplier = Book::new;
     }
 }
