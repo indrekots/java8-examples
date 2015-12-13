@@ -3,8 +3,10 @@ package ee.indrek.methodreference;
 import ee.indrek.behavior.example.Book;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.*;
+import java.util.stream.Collectors;
 
 public class MethodReference extends ParentReference {
 
@@ -16,8 +18,10 @@ public class MethodReference extends ParentReference {
     }
 
     private void run() {
+        //method reference to a static method
+        List<String> stringInts = Arrays.asList("1", "2", "3");
+        List<Integer> ints = stringInts.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
 
-        
         books = new ArrayList<>();
         books.add(new Book("All Quiet on the Western Front", 295, "Erich Maria Remarque"));
 
