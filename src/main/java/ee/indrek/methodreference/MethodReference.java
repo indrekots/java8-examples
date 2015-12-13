@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.*;
 
-public class MethodReference {
+public class MethodReference extends ParentReference {
 
     private List<Book> books;
 
@@ -16,6 +16,8 @@ public class MethodReference {
     }
 
     private void run() {
+
+        
         books = new ArrayList<>();
         books.add(new Book("All Quiet on the Western Front", 295, "Erich Maria Remarque"));
 
@@ -38,9 +40,13 @@ public class MethodReference {
 
         //this keyword in method reference
         new Thread(this::sayHello).start();
+
+        //super keyword in method reference
+        new Thread(super::sayHello).start();
     }
 
-    private void sayHello() {
+    @Override
+    public void sayHello() {
         System.out.println("Hello World!");
     }
 }
