@@ -2,8 +2,10 @@ package ee.indrek.behavior.example;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 
+import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
 
 public class BookLambdaRunner {
@@ -26,5 +28,15 @@ public class BookLambdaRunner {
             }
         }
         return result;
+    }
+
+    public static List<Book> filterLongBooks(List<Book> books) {
+        return books.stream().
+                filter(b -> b.getPageCount() > 100).
+                collect(toList());
+    }
+
+    public static Map<String, List<Book>> groupBooksByAuthor(List<Book> books) {
+          return books.stream().collect(groupingBy(Book::getAuthor));
     }
 }
