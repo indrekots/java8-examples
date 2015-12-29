@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toList;
@@ -32,11 +33,15 @@ public class BookLambdaRunner {
 
     public static List<Book> filterLongBooks(List<Book> books) {
         return books.stream().
-                filter(b -> b.getPageCount() > 100).
+                filter(b -> b.getPageCount() > 500).
                 collect(toList());
     }
 
     public static Map<String, List<Book>> groupBooksByAuthor(List<Book> books) {
           return books.stream().collect(groupingBy(Book::getAuthor));
+    }
+
+    public static Map<Boolean, List<Book>> partitionBooksByLength(List<Book> books) {
+        return books.stream().collect(Collectors.partitioningBy(b -> b.getPageCount() > 500));
     }
 }
