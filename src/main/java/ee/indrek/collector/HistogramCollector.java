@@ -7,15 +7,26 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
 
-public class HistogramCollector implements Collector<Integer, Map<Integer, Integer>, Map<Integer, Integer>> {
+import static java.util.stream.Collector.Characteristics.IDENTITY_FINISH;
+import static java.util.stream.Collector.Characteristics.UNORDERED;
+
+public class HistogramCollector implements Collector<Double, Map<Integer, Integer>, Map<Integer, Integer>> {
+
+    private int bucketSize;
+
+    public HistogramCollector(int bucketSize) {
+        this.bucketSize = bucketSize;
+    }
+
     @Override
     public Supplier<Map<Integer, Integer>> supplier() {
         return HashMap::new;
     }
 
     @Override
-    public BiConsumer<Map<Integer, Integer>, Integer> accumulator() {
-        return (map, val) -> map.merge(val, 1, (a, b) -> a + 1);
+    public BiConsumer<Map<Integer, Integer>, Double> accumulator() {
+        return (map, val) -> map.merge((int)(val / bucketSize), 1,
+                (a, b) -> a + 1);
     }
 
     @Override
@@ -33,6 +44,6 @@ public class HistogramCollector implements Collector<Integer, Map<Integer, Integ
 
     @Override
     public Set<Characteristics> characteristics() {
-        return EnumSet.of(Characteristics.IDENTITY_FINISH);
+        return EnumSet.of(IDENTITY_FINISH, UNORDERED);
     }
 }
