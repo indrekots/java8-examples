@@ -46,4 +46,8 @@ public class HistogramCollector implements Collector<Double, Map<Integer, Intege
     public Set<Characteristics> characteristics() {
         return EnumSet.of(IDENTITY_FINISH, UNORDERED);
     }
+
+    public static HistogramCollector toHistogram(int bucketSize) {
+        return new HistogramCollector(bucketSize);
+    }
 }
