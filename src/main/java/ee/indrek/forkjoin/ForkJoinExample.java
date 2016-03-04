@@ -6,8 +6,8 @@ import java.util.stream.LongStream;
 public class ForkJoinExample {
     public static void main(String[] args) {
         long[] numbers = LongStream.rangeClosed(1, 10000).toArray();
-        LongSum multiplier = new LongSum(numbers, 0, numbers.length);
-        Long result = new ForkJoinPool().invoke(multiplier);
+        LongSum longSum = new LongSum(numbers, 0, numbers.length);
+        Long result = new ForkJoinPool().invoke(longSum);
         System.out.println(result);
     }
 }
