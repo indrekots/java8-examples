@@ -1,9 +1,12 @@
 package ee.indrek.behavior.example;
 
+import ee.indrek.domain.Publisher;
+
 public class Book {
     private String name;
     private int pageCount;
     private String author;
+    private Publisher publisher;
 
     public Book(String name, int pageCount, String author) {
         this.name = name;
@@ -41,8 +44,20 @@ public class Book {
         this.author = author;
     }
 
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
+
     @Override
     public String toString() {
         return String.format("Name: %s, page count: %d, author: %s", name, pageCount, author);
+    }
+
+    public static Book defaultBook() {
+        return new Book();
     }
 }
