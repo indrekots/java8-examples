@@ -9,14 +9,23 @@ public class OptionalExample {
 
     public static void main(String[] args) {
         Optional<Book> empty = Optional.empty();
-        Optional<Book> optional = Optional.of(new Book());
+        Optional<Book> optional = Optional.of(bookWithPublisher());
 
         Optional<Book> bookOptional = findBook("The War of the Worlds");
-        Book b1 = bookOptional.get();
+        //Book b1 = bookOptional.get();
         Book b2 = bookOptional.orElse(new Book());
         Book b3 = bookOptional.orElseGet(Book::defaultBook);
         String name = Optional.of(new Book()).map(Book::getName).orElse("Name not provided");
-        String publisher = bookOptional.map(Book::getPublisher).map(Publisher::getName).orElse("Unknown publisher");
+
+        String publisher = optional.map(Book::getPublisher).map(Publisher::getName).orElse("Unknown publisher");
+        optional.ifPresent(System.out::println);
+    }
+
+    private static Book bookWithPublisher() {
+        Book book = new Book();
+        Publisher publisher = new Publisher("My Publisher");
+        book.setPublisher(publisher);
+        return book;
     }
 
     private static Optional<Book> findBook(String title) {
