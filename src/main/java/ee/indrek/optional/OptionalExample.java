@@ -3,7 +3,10 @@ package ee.indrek.optional;
 import ee.indrek.behavior.example.Book;
 import ee.indrek.domain.Publisher;
 
+import java.util.Arrays;
 import java.util.Optional;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 public class OptionalExample {
 
@@ -19,6 +22,8 @@ public class OptionalExample {
 
         String publisher = optional.map(Book::getPublisher).map(Publisher::getName).orElse("Unknown publisher");
         optional.ifPresent(System.out::println);
+
+        Optional<Long> first = first(Optional::empty, () -> Optional.of(5L));
     }
 
     private static Book bookWithPublisher() {
@@ -26,6 +31,14 @@ public class OptionalExample {
         Publisher publisher = new Publisher("My Publisher");
         book.setPublisher(publisher);
         return book;
+    }
+
+    @SafeVarargs
+    public static <T> Optional<T> first(Supplier<Optional<T>>... suppliers) {
+        return Arrays.asList(suppliers).stream()
+                .map(Supplier::get)
+                .flatMap(o -> o.map(Stream::of).orElseGet(Stream::empty))
+                .findFirst();
     }
 
     private static Optional<Book> findBook(String title) {
