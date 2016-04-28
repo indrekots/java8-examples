@@ -6,9 +6,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.stream.IntStream;
 
+import static ee.indrek.concurrency.ConcurrencyUtils.delay;
+
 public class FutureExample {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        ExecutorService executorService = Executors.newFixedThreadPool(4);
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
 
         Future<String> result = executorService.submit(() -> {
             delay(5000); //simulate network call
@@ -20,13 +22,5 @@ public class FutureExample {
             System.out.println("Doing useful work");
         });
         System.out.println(result.get());
-    }
-
-    public static void delay(int millis) {
-        try {
-            Thread.sleep(millis);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
     }
 }
