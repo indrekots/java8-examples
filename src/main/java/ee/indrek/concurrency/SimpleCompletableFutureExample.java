@@ -9,7 +9,7 @@ import static ee.indrek.concurrency.ConcurrencyUtils.delay;
 
 public class SimpleCompletableFutureExample {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        Future<String> future = getResultOverNetwork();
+        Future<String> future = getResultOverNetwork2();
 
         IntStream.range(1, 10).forEach(i -> {
             delay(100);
@@ -25,5 +25,12 @@ public class SimpleCompletableFutureExample {
             future.complete("{\"result\":\"success\"}");
         }).start();
         return future;
+    }
+
+    private static Future<String> getResultOverNetwork2() {
+        return CompletableFuture.supplyAsync(() -> {
+            delay(5000);
+            return "{\"result\":\"success\"}";
+        });
     }
 }
