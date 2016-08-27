@@ -1,6 +1,6 @@
 package ee.indrek.optional;
 
-import ee.indrek.behavior.example.Book;
+import ee.indrek.domain.Book;
 import ee.indrek.domain.Publisher;
 
 import java.util.Arrays;
@@ -33,7 +33,7 @@ public class OptionalExample {
         return book;
     }
 
-    @SafeVarargs
+    //@SafeVarargs
     public static <T> Optional<T> first(Supplier<Optional<T>>... suppliers) {
         return Arrays.asList(suppliers).stream()
                 .map(Supplier::get)

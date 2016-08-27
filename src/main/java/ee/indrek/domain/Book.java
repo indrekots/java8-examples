@@ -1,6 +1,4 @@
-package ee.indrek.behavior.example;
-
-import ee.indrek.domain.Publisher;
+package ee.indrek.domain;
 
 public class Book {
     private String name;

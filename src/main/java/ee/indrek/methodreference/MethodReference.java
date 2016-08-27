@@ -1,6 +1,6 @@
 package ee.indrek.methodreference;
 
-import ee.indrek.behavior.example.Book;
+import ee.indrek.domain.Book;
 
 import java.util.ArrayList;
 import java.util.Arrays;

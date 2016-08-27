@@ -1,5 +1,7 @@
 package ee.indrek.behavior.example;
 
+import ee.indrek.domain.Book;
+
 public class LengthPredicate implements BookPredicate {
     private int length;
 

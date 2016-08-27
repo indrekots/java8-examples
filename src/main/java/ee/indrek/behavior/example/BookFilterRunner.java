@@ -2,13 +2,12 @@ package ee.indrek.behavior.example;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+import ee.indrek.domain.Book;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static ch.lambdaj.Lambda.*;
-import static java.util.stream.Collectors.toList;
 import static org.hamcrest.Matchers.equalTo;
 
 public class BookFilterRunner {
