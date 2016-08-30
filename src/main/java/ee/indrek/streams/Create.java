@@ -33,5 +33,11 @@ public class Create {
         //create a stream from a file
         Stream<String> lines = Files.lines(Paths.get("/tmp/data"), Charset.defaultCharset());
 
+        //create stream with iterate
+        Stream<Integer> evenNumbers = Stream.iterate(0, n -> n + 2);
+
+        //create a stream with generate
+        Stream<Double> randomNumbers = Stream.generate(Math::random);
+
     }
 }
