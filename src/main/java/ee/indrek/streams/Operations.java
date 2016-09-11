@@ -22,5 +22,11 @@ public class Operations {
         String[] books = {"Alice's Adventures in Wonderland", "1984", "The Neverending Story"};
         Optional<String> result = Arrays.stream(books).reduce((a, b) -> a + " " + b);
         result.ifPresent(System.out::println);
+
+        String reduce = library.stream().reduce("", (s, b) -> s + " " + b.getName(), (a, b) -> a + " " + b);
+        System.out.println(reduce);
+
+        String s = library.stream().map(Book::getName).reduce("", (a, b) -> a + " " + b);
+        System.out.println(s);
     }
 }
