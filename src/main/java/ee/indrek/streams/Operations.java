@@ -28,5 +28,10 @@ public class Operations {
 
         String s = library.stream().map(Book::getName).reduce("", (a, b) -> a + " " + b);
         System.out.println(s);
+
+        library.stream().filter(b -> b.getPageCount() > 300).forEach(System.out::println);
+
+        Arrays.asList(1, 4, 2, 1, 1, 2, 6).stream().distinct().forEach(System.out::println);
+        Arrays.asList(1, 2, 3, 4, 5, 6).stream().limit(3).forEach(System.out::println);
     }
 }
