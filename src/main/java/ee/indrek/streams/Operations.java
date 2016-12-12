@@ -2,13 +2,18 @@ package ee.indrek.streams;
 
 import ee.indrek.domain.Book;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 public class Operations {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         List<Book> library = new ArrayList<>();
         library.add(new Book("Alice's Adventures in Wonderland", 300, "Lewis Carrol"));
         library.add(new Book("Through the Looking-Glass, and What Alice Found There", 228, "Lewis Carrol"));
@@ -33,5 +38,8 @@ public class Operations {
 
         Arrays.asList(1, 4, 2, 1, 1, 2, 6).stream().distinct().forEach(System.out::println);
         Arrays.asList(1, 2, 3, 4, 5, 6).stream().limit(3).forEach(System.out::println);
+
+        Stream<Path> list = Files.list(Paths.get("/home/indrek"));
+        list.forEach(System.out::println);
     }
 }
