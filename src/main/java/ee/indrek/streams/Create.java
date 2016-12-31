@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Create {
@@ -26,6 +27,9 @@ public class Create {
         //create a stream from an array
         String[] names = {"Lewis Carrol", "H.G. Wells", "Michael Ende"};
         Stream<String> stream = Arrays.stream(names);
+
+        int[] integers = {1, 4, 6, 2, 6, 3, 2};
+        IntStream intStream = Arrays.stream(integers);
 
         //create a stream from values
         Stream<String> stream2 = Stream.of("Lewis Carrol", "H.G. Wells", "Michael Ende");
