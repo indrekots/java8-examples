@@ -32,7 +32,7 @@ public class HistogramCollector implements Collector<Double, Map<Integer, Intege
     @Override
     public BinaryOperator<Map<Integer, Integer>> combiner() {
         return (map1, map2) -> {
-            map2.forEach((k, v) -> map1.merge(k, v, (v1, v2) -> v1++));
+            map2.forEach((k, v) -> map1.merge(k, v, (v1, v2) -> v1 + v2));
             return map1;
         };
     }
